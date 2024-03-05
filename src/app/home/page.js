@@ -8,7 +8,7 @@ import {
   slideAnimation,
 } from "@/config/motion";
 import state from "@/store";
-import Custombutton from "@/components/custombutton";
+import Custombutton from "@/components/CustomButton";
 const Home = () => {
   const snap = useSnapshot(state);
   return (
