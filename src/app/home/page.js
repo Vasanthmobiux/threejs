@@ -7,8 +7,9 @@ import {
   headContentAnimation,
   slideAnimation,
 } from "@/config/motion";
-import state from "@/store";
-import Custombutton from "@/components/CustomButton";
+import state from "@/store/index";
+import CustomButton from "@/components/CustomButton";
+
 const Home = () => {
   const snap = useSnapshot(state);
   return (
@@ -41,7 +42,7 @@ const Home = () => {
                 define your own style.{" "}
               </p>
 
-              <Custombutton
+              <CustomButton
                 type="filled"
                 title="Customize it"
                 handleClick={() => (state.intro = false)}

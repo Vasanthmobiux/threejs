@@ -16,8 +16,32 @@ import {
   FilePicker,
   Custombutton,
 } from "@/components/index";
+import CanvasModel from "../canvas/page";
 const Customizer = () => {
   const snap = useSnapshot(state);
+
+  const [file, setFile] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [generatingImg, setGeneratingImg] = useState(false);
+
+  const [activeEditorTabs, setActiveEditorTabs] = useState("");
+  const [activeFilterTabs, setActiveFilterTabs] = useState({
+    logoShirt: true,
+    stylishShirt: false,
+  });
+
+  const generateTabContent = () => {
+    switch (activeEditorTabs) {
+      case "colorpicker":
+        return <Colorpicker />;
+      case "filepicker":
+        return <FilePicker />;
+      case "aipicker":
+        return <AIpicker />;
+      default:
+        return null;
+    }
+  };
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -30,8 +54,16 @@ const Customizer = () => {
             <div className="flex items-center min-h-screen">
               <div className="editortabs-container tabs">
                 {EditorTabs.map((tab) => (
-                  <Tab key={tab.name} tab={tab} handleClick={() => {}} />
+                  <Tab
+                    key={tab.name}
+                    tab={tab}
+                    handleClick={() => {
+                      setActiveEditorTabs(tab.name);
+                    }}
+                  />
                 ))}
+
+                {generateTabContent()}
               </div>
             </div>
           </motion.div>

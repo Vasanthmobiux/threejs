@@ -1,5 +1,7 @@
 import { swatch, fileIcon, ai, logoShirt, stylishShirt } from "@/assests";
 
+console.log(swatch);
+
 export const EditorTabs = [
   {
     name: "colorpicker",

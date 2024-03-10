@@ -1,9 +1,8 @@
 import { useSnapshot } from "valtio";
 import state from "@/store/index";
 
-const Custombutton = ({ type, title, handleClick, customStyle }) => {
+const CustomButton = ({ type, title, handleClick, customStyle }) => {
   const snap = useSnapshot(state);
-  console.log(snap);
 
   const generateStyle = (type) => {
     if (type === "filled") {
@@ -22,4 +21,4 @@ const Custombutton = ({ type, title, handleClick, customStyle }) => {
   );
 };
 
-export default Custombutton;
+export default CustomButton;
