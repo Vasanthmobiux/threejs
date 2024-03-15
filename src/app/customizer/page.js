@@ -17,6 +17,7 @@ import {
   Custombutton,
 } from "@/components/index";
 import CanvasModel from "../canvas/page";
+
 const Customizer = () => {
   const snap = useSnapshot(state);
 
@@ -35,12 +36,40 @@ const Customizer = () => {
       case "colorpicker":
         return <Colorpicker />;
       case "filepicker":
-        return <FilePicker />;
+        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case "aipicker":
         return <AIpicker />;
       default:
         return null;
     }
+  };
+  const handleDecals = (result, type) => {
+    const decalType = DecalTypes[type];
+    state[decalType.stateProperty] = result;
+    if (!activeFilterTabs[decalType.filterTab]) {
+      handleActiveFilterTabs(decalType.filterTab);
+    }
+  };
+
+  const handleActiveFilterTabs = (tabName) => {
+    switch (tabName) {
+      case "logoShirt":
+        state.isLogoTexture = !activeFilterTabs[tabName];
+        break;
+      case "stylishShirt":
+        state.isStylishTexture = !activeFilterTabs[tabName];
+        break;
+      default:
+        state.isLogoTexture = true;
+        state.isStylishTexture = false;
+    }
+  };
+
+  const readFile = (type) => {
+    reader(file).then((result) => {
+      handleDecals(result, type);
+      setActiveEditorTabs("");
+    });
   };
   return (
     <AnimatePresence>
