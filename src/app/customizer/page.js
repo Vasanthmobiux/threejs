@@ -38,15 +38,49 @@ const Customizer = () => {
       case "filepicker":
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case "aipicker":
-        return <AIpicker />;
+        return (
+          <AIpicker
+            prompt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            handleSubmit={handleSubmit}
+          />
+        );
       default:
         return null;
     }
   };
-  const handleDecals = (result, type) => {
+  const handleSubmit = async (type) => {
+    if (!prompt) return alert("Please enter a prompt");
+    try {
+      setGeneratingImg(true);
+      const response = await fetch("/api/v1/route", {
+        method: "POST",
+
+        body: JSON.stringify({ prompt }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const image = data.photo.data[0].b64_json;
+
+      handleDecals(type, `data:image/png;base64,${image}`);
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTabs("");
+    }
+  };
+
+  const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
+
     state[decalType.stateProperty] = result;
-    if (!activeFilterTabs[decalType.filterTab]) {
+
+    if (!setActiveFilterTabs[decalType.filterTab]) {
       handleActiveFilterTabs(decalType.filterTab);
     }
   };
@@ -57,12 +91,19 @@ const Customizer = () => {
         state.isLogoTexture = !activeFilterTabs[tabName];
         break;
       case "stylishShirt":
-        state.isStylishTexture = !activeFilterTabs[tabName];
+        state.isFullTexture = !activeFilterTabs[tabName];
         break;
       default:
         state.isLogoTexture = true;
         state.isStylishTexture = false;
     }
+
+    setActiveFilterTabs((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName],
+      };
+    });
   };
 
   const readFile = (type) => {
@@ -117,8 +158,10 @@ const Customizer = () => {
                     key={tab.name}
                     tab={tab}
                     isFilterTabs
-                    isActiveTabs=""
-                    handleClick={() => {}}
+                    isActiveTabs={activeFilterTabs[tab.name]}
+                    handleClick={() => {
+                      handleActiveFilterTabs(tab.name);
+                    }}
                   />
                 ))}
               </div>
