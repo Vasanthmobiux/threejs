@@ -10,9 +10,10 @@ const BackDrop = () => {
       ref={shadows}
       temporal
       frames={60}
-      scale={10}
-      rotation={[Math.PI / 2, 0, 0]}
-      position={[0, 0, -0.3]}
+      alphaTest={0.85}
+      scae={10}
+      rotation={[Math.PI / 4, 0, 0]}
+      position={[0, 0]}
     >
       <RandomizedLight
         amount={4}
@@ -26,7 +27,7 @@ const BackDrop = () => {
         radius={5}
         intensity={0.25}
         ambient={0.55}
-        position={[-5, 5, -10]}
+        position={[-5, 5, -9]}
       />
     </AccumulativeShadows>
   );
