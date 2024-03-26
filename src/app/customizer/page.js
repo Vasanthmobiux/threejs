@@ -77,6 +77,7 @@ const Customizer = () => {
 
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
+    console.log(decalType )
 
     state[decalType.stateProperty] = result;
 
