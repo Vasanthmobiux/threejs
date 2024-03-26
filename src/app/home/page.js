@@ -31,15 +31,9 @@ const Home = () => {
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-<<<<<<< Updated upstream
                 Design your
                 <br className="xl:block " />
                 dream tee
-=======
-              Design 
-                <br className="xl:block hidden" />
-                Drip
->>>>>>> Stashed changes
               </h1>
             </motion.div>
             <motion.div
