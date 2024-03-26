@@ -32,7 +32,7 @@ const AIpicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
               type="filled"
               title="AI Full"
               handleClick={() => {
-                handleSubmit("logo");
+                handleSubmit("full");
               }}
               customStyle="text-xs"
             />
