@@ -17,9 +17,12 @@ const Home = () => {
       {snap.intro && (
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
+          <motion.header {...slideAnimation("down")}>
             <img
               src="./threejs.png"
+              src="./threejs.png"
               alt="logo"
+              className="w-8 h-8 object-contain"
               className="w-8 h-8 object-contain"
             />
           </motion.header>
@@ -47,9 +50,13 @@ const Home = () => {
             <motion.div
               {...headContentAnimation}
               className="flex flex-col gap-5"
+              className="flex flex-col gap-5"
             >
               <p className="max-wd-md font-normal text-gray-600 text-base">
+              <p className="max-wd-md font-normal text-gray-600 text-base">
                 Create your unique and exclusive shirt with brand-new 3D
+                cusomization tool. <strong>Unleash your imagination</strong> and
+                define your own style.{" "}
                 cusomization tool. <strong>Unleash your imagination</strong> and
                 define your own style.{" "}
               </p>
