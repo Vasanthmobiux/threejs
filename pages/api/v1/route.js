@@ -10,7 +10,6 @@ export default async function handler(req, res) {
   } else if (req.method === "POST") {
     const prompt = req.body.prompt;
     const response = await openai.images.generate({
-      model: "dall-e-2",
       prompt: prompt,
       n: 1,
       size: "1024x1024",

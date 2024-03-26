@@ -2,6 +2,7 @@ import CanvasModel from "./canvas/page";
 import Customizer from "./customizer/page";
 import Home from "./home/page";
 
+import {} from "./customizer/page";
 const App = () => {
   return (
     <main className="app transition-all ease-in">

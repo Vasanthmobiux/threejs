@@ -16,21 +16,18 @@ const Home = () => {
     <AnimatePresence>
       {snap.intro && (
         <motion.section className="home" {...slideAnimation("left")}>
-          <motion.header
-            {...slideAnimation("down")}
-            className="flex  items-center "
-          >
+          <motion.header {...slideAnimation("down")}>
             <img
-              src="./logo.png"
+              src="./threejs.png"
               alt="logo"
-              className="h-10 w-10 object-contain"
+              className="w-8 h-8 object-contain"
             />
-            <h1 className=" text-zinc-900 font-extrabold pb-2">Tee Riffic</h1>
           </motion.header>
 
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 Design your
                 <br className="xl:block " />
@@ -40,17 +37,21 @@ const Home = () => {
                 <br className="xl:block hidden" />
                 Drip
 >>>>>>> Stashed changes
+=======
+                LETS
+                <br className="xl:block hidden" />
+                DO IT
+>>>>>>> parent of 6a82cf6 (fixes)
               </h1>
             </motion.div>
             <motion.div
               {...headContentAnimation}
-              className="flex flex-col gap-5 "
+              className="flex flex-col gap-5"
             >
-              <p className="max-wd-md font-normal text-gray-600 text-base ">
+              <p className="max-wd-md font-normal text-gray-600 text-base">
                 Create your unique and exclusive shirt with brand-new 3D
-                cusomization tool. <br />
-                <strong>Unleash your imagination</strong> and define your own
-                style.
+                cusomization tool. <strong>Unleash your imagination</strong> and
+                define your own style.{" "}
               </p>
 
               <CustomButton

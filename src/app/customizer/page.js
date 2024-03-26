@@ -47,7 +47,7 @@ const Customizer = () => {
           />
         );
       default:
-        null;
+        return null;
     }
   };
   const handleSubmit = async (type) => {
@@ -109,7 +109,7 @@ const Customizer = () => {
 
   const readFile = (type) => {
     reader(file).then((result) => {
-      handleDecals(type, result);
+      handleDecals(result, type);
       setActiveEditorTabs("");
     });
   };
